@@ -1,12 +1,17 @@
+" Set GUI options
 set transparency=15
 set guioptions=aAce
 set guifont=Monaco:h15
+colorscheme molokai
+
+" Set tabs to spaces, autoindent and 2 spaces in 1 tab
 set smarttab
 set autoindent
 set smartindent
 set expandtab
 set shiftwidth=2
-colorscheme molokai
+
+" Auto close brackets and quotes
 :inoremap ( ()<Esc>i
 :inoremap [ []<Esc>i
 :inoremap { {}<Esc>i
@@ -14,9 +19,16 @@ colorscheme molokai
 :inoremap ' ''<Esc>i
 :inoremap ' ''<Esc>i
 :inoremap < <><Esc>i
+
+" New line and indent after open {
 :inoremap { {<CR><BS>}<Esc>ko
+
+" Double tap { to only get one brace
 :inoremap {{ {
+
+" Sets up autoclosing html tags
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 :iabbrev </ </<C-X><C-O>
+
 "<Ctrl-l> redraws the screen and removes any search highlighting."
 nnoremap <silent> <C-l> :nohl<CR><C-l>
