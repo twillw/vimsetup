@@ -4,6 +4,8 @@ set guioptions=aAce
 set guifont=Monaco:h15
 colorscheme molokai
 
+filetype plugin indent on
+
 " Set tabs to spaces, autoindent and 2 spaces in 1 tab
 set smarttab
 set autoindent
@@ -11,24 +13,39 @@ set smartindent
 set expandtab
 set shiftwidth=2
 
+" Don't let vim write a backup file or swp file
+set nobackup
+set noswapfile
+
 " Auto close brackets and quotes
-:inoremap ( ()<Esc>i
-:inoremap [ []<Esc>i
-:inoremap { {}<Esc>i
-:inoremap " ""<Esc>i
-:inoremap ' ''<Esc>i
-:inoremap ' ''<Esc>i
-:inoremap < <><Esc>i
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {}<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
+inoremap ' ''<Esc>i
+inoremap < <><Esc>i
+inoremap <C-j> <Esc>/[)}"'\]>]<CR>a
 
 " New line and indent after open {
-:inoremap { {<CR><BS>}<Esc>ko
+inoremap {<CR> {<CR><BS>}<Esc>ko
 
 " Double tap { to only get one brace
-:inoremap {{ {
+inoremap {{ {
 
 " Sets up autoclosing html tags
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-:iabbrev </ </<C-X><C-O>
+iabbrev </ </<C-X><C-O>
 
 "<Ctrl-l> redraws the screen and removes any search highlighting."
 nnoremap <silent> <C-l> :nohl<CR><C-l>
+
+"Use semicolon and colon interchangebly
+nnoremap ; :
+
+"Leader e appends to end of the line
+nnoremap <Leader>e $a
+
+"Ctrl-s to write a file
+inoremap <C-s> <Esc>:w<CR>
+nnoremap <C-s> :w<CR>
